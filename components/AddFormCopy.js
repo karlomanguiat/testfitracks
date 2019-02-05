@@ -12,17 +12,11 @@ import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
 
-var ContainerType = t.enums({
-  Glass: 'Glass',
-  Bottle: 'Plastic Bottle',
-  Container: 'Your Own Container',
-  Etc: 'Others'
-});
 const User = t.struct({
-  water_container: ContainerType,
-  amount_in_ml: t.Number,
-  date_consumed: t.Date,
-  time_consumed: t.Date,
+  container: t.String,
+  username: t.maybe(t.String),
+  password: t.String,
+  terms: t.Boolean
 });
 
 const formStyles = { ...Form.stylesheet,
@@ -33,10 +27,10 @@ const formStyles = { ...Form.stylesheet,
   },
   controlLabel: {
     normal: {
-      color: 'black',
-      fontSize: 20,
+      color: 'blue',
+      fontSize: 18,
       marginBottom: 7,
-      fontWeight: '100'
+      fontWeight: '600'
     },
     // the style applied when a validation error occours
     error: {
@@ -50,27 +44,14 @@ const formStyles = { ...Form.stylesheet,
 
 const options = {
   fields: {
-    container: {
-      error: 'Container must not be empty!'
+    email: {
+      error: 'Without an email address how are you going to reset your password when you forget it?'
     },
-    amount_in_ml: {
-      label: 'Amount in mL'
+    password: {
+      error: 'Choose something you use on a dozen other sites or something you won\'t remember'
     },
-    date_consumed: {
-      label: 'Date Consumed',
-      mode: 'date',
-      config: {
-        dialogMode: 'spinner',
-        defaultValueText: 'Add Date of Consumption'
-      },
-    },
-    time_consumed: {
-      label: 'Time Consumed',
-      mode: 'time',
-      config: {
-        dialogMode: 'default',
-        defaultValueText: 'Add Time of Consumption'
-      },
+    terms: {
+      label: 'Agree to Terms',
     },
   },
   stylesheet: formStyles,
@@ -95,8 +76,8 @@ export default class AddForm extends Component<Props> {
                 type={User} 
                 options={options}
             />
-            <Button style={styles.addIntakeButton}
-                title="Add Intake"
+            <Button
+                title="Sign Up!"
                 onPress={this.handleSubmit}
             />
         </ScrollView>
@@ -152,13 +133,5 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: '#fff',
     fontSize: 29
-},
-  addIntakeButton: {
-  position: 'absolute',
-  backgroundColor: '#DB3B3B',
-  width: 70,
-  height: 70,
-  alignItems: 'center',
-  justifyContent: 'center',
 }
 });

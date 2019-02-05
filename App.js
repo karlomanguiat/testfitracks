@@ -9,8 +9,8 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-//import Main from './components/Main'
 import AddForm from './components/AddForm'
+//import Main from './components/Main'
 
 type Props = {};
 export default class App extends Component<Props> {
