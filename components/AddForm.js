@@ -27,31 +27,44 @@ const User = t.struct({
 
 const formStyles = { ...Form.stylesheet,
   formGroup: {
-        normal: {
-        marginBottom: 10
+    normal: {
+      marginBottom: 0,
+      marginTop: 2,
+      height: 100,
+      width: 350,
+      padding: 0,
+      justifyContent:'center',
+    },
+
+    error: {
+      marginBottom: 0,
+      height: 100,
+      width: 350,
+      padding: 0,
+      justifyContent:'center',
     },
   },
   controlLabel: {
     normal: {
       color: 'black',
-      fontSize: 20,
-      marginBottom: 7,
-      fontWeight: '100'
+      fontSize: 18,
+      marginBottom: 4,
+      fontWeight: '400'
     },
     // the style applied when a validation error occours
     error: {
-      color: 'red',
+      color: '#DB3B3B',
       fontSize: 18,
-      marginBottom: 7,
-      fontWeight: '600'
+      marginBottom: 4,
+      fontWeight: '400'
     }
   }
 }
 
 const options = {
   fields: {
-    container: {
-      error: 'Container must not be empty!'
+    water_container: {
+      label: 'Water Container',
     },
     amount_in_ml: {
       label: 'Amount in mL'
@@ -87,23 +100,26 @@ export default class AddForm extends Component<Props> {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-            <Text style={styles.headerText}>TEST</Text>
+            <Text style={styles.headerText}>FiTRACKS</Text>
         </View>
         <ScrollView style={styles.scrollContainer}>
-            <Form 
+          <View style={styles.containerscreen}>
+            <View style={styles.form_container}>
+              <Form 
                 ref={c => this._form = c}
                 type={User} 
                 options={options}
-            />
-            <Button style={styles.addIntakeButton}
-                title="Add Intake"
-                onPress={this.handleSubmit}
-            />
-        </ScrollView>
+              />
 
-        <TouchableOpacity style={styles.addButton}>
-            <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.submitbutton}
+                onPress={this.handleSubmit}
+              >
+                <Text style={styles.submitbuttontext}> Submit </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -111,14 +127,26 @@ export default class AddForm extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    marginTop: 50,
-    padding: 20,
-    backgroundColor: '#ffffff',
-  },
-  container: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
+  },
+  containerscreen: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    marginBottom: 5,
+    marginTop: 10,
+    borderColor: '#cccccc',
+
+  },
+  form_container: {
+    flex: 1,
+    width: 390,
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 4,
+    borderColor: '#cccccc', // <= relevant style here
+    borderWidth: 1,
   },
   header: {
     backgroundColor: '#DB3B3B',
@@ -129,7 +157,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    marginBottom: 100
+    marginBottom: 0
   },
   headerText: {
     color: 'white',
@@ -148,17 +176,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 5
-},
+  },
   addButtonText: {
     color: '#fff',
     fontSize: 29
-},
+  },
   addIntakeButton: {
-  position: 'absolute',
-  backgroundColor: '#DB3B3B',
-  width: 70,
-  height: 70,
-  alignItems: 'center',
-  justifyContent: 'center',
-}
+    position: 'absolute',
+    backgroundColor: '#DB3B3B',
+    width: 70,
+    height: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  submitbutton: {
+    width: 350,
+    alignItems: 'center',
+    backgroundColor: '#0EA3F2',
+    padding: 10,
+    marginBottom: 20,
+    borderRadius: 5
+  },
+  submitbuttontext: {
+    color: '#fff',
+    fontSize: 18
+  },
 });
