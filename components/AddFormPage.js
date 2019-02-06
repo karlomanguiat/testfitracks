@@ -90,9 +90,6 @@ export default class AddForm extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>FiTracks</Text>
-          </View>
         <ScrollView style={styles.scrollContainer}>
           <View style={styles.containerScreen}>
             <View style={styles.formContainer}>
@@ -111,10 +108,6 @@ export default class AddForm extends Component<Props> {
             </View>
           </View>
         </ScrollView>
-
-        <TouchableOpacity style ={styles.backArrowButton}>
-          <Text style={styles.BackArrowText}>←</Text>
-        </TouchableOpacity>
       </View>
     );
   }

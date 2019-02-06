@@ -1,22 +1,21 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
+import {createAppContainer, createStackNavigator} from 'react-navigation'
+import AddFormPage from './AddFormPage'
 
 type Props = {};
 
-export default class Main extends Component<Props> {
+class HomePage extends Component<Props> {
     render() {
       return (
         <View style={styles.container}>
-          <View style={styles.header}>
-            <Text style={styles.headerText}>FiTracks</Text>
-          </View>
         <ScrollView style={styles.scrollContainer}>
 
         </ScrollView>
       
         <TouchableOpacity 
           style={styles.addButton}
-          onPress = {() => this.props.navigation.navigate('AddFormPage')}>
+          onPress = {() => this.props.navigation.navigate('Add')}>
             <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
 
@@ -25,6 +24,37 @@ export default class Main extends Component<Props> {
     }
   }
 
+const RootStack = createStackNavigator({
+      Home: {
+        screen: HomePage,
+      },
+      Add: {
+        screen: AddFormPage,
+      },
+    },
+    {
+      initialRouteName: 'Home',
+
+      defaultNavigationOptions: {
+        headerStyle: {
+          backgroundColor: '#DB3B3B',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      },
+    },
+  );
+
+const AppContainer = createAppContainer(RootStack);
+
+export default class App extends React.Component {
+    render() {
+      return <AppContainer />;
+    }
+  }
+  
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -64,4 +94,3 @@ const styles = StyleSheet.create({
       fontSize: 29
   }
 });
-  
