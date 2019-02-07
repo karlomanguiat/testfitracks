@@ -8,8 +8,8 @@ This code is created by Trina B. Aguilana, Glenn Karlo D. Manguiat, and Ian N. V
 
 Code History:
 
-Programmer		              Date			  Description
-Glenn Karlo D. Manguiat 		02/01/18		Creation
+Programmer		            Date			  Description
+Glenn Karlo D. Manguiat 	02/01/18		Creation
 
 
 File Creation Date: 02/01/18
