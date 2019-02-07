@@ -135,12 +135,6 @@ export default class AddForm extends React.Component {
             </View>
           </View>
         </ScrollView>
-
-        <TouchableOpacity 
-          style={styles.addButton}
-          onPress = {() => this.props.navigation.navigate('Home')}>
-            <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -168,6 +162,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: '#cccccc', // <= relevant style here
     borderWidth: 1,
+  },
+  titleContainer: {
+    flex: 1,
+    width: 390,
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    left: 15
   },
   header: {
     backgroundColor: '#DB3B3B',
@@ -221,6 +222,13 @@ const styles = StyleSheet.create({
   SubmitButtonText: {
     color: '#fff',
     fontSize: 18
+  },
+  titleText: {
+    color: '#000',
+    fontSize: 19,
+    marginBottom: 0,
+    marginTop: 10,
+    textAlign: 'justify',
   },
   backArrowButton: {
     position: 'absolute',
