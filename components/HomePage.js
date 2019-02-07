@@ -1,3 +1,25 @@
+/*
+
+This is a course requirement for CS 191 / 192 Software Engineering Courses of the Department of Computer Science, 
+  College of Engineering, University of the Philippines, Diliman under the guidance of Ma. Rowena C. Solamo for the 
+  1st and 2nd Semester of the academic year <2018-2019>.
+
+This code is created by Trina B. Aguilana, Glenn Karlo D. Manguiat, and Ian N. Villanueva.
+
+Code History:
+
+Programmer		              Date			  Description
+Glenn Karlo D. Manguiat 		02/03/18		Creation
+Glenn Karlo D. Manguiat 		02/05/18 		Update on UI
+Glenn Karlo D. Manguiat			02/07/18		Update on UI
+
+File Creation Date: 02/03/18
+Client Group: CS 192
+Purpose of the Software: <FiTracks> is a web application which tracks the daily, weekly, or monthly calorie spent 
+  in food and water intake for a fitter and healthier scholars of the University of the Philippines.
+  
+*/
+
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {createAppContainer, createStackNavigator} from 'react-navigation'
