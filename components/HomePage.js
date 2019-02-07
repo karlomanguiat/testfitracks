@@ -7,6 +7,11 @@ type Props = {};
 
 class HomePage extends Component<Props> {
     render() {
+      const { navigation } = this.props;
+      const water_container = navigation.getParam('water_container', 'some default value');
+      const amount_in_ml = navigation.getParam('amount_in_ml', 'some default value');
+      const date_consumed = navigation.getParam('date_consumed', 'some default value');
+      const time_consumed = navigation.getParam('time_consumed', 'some default value');
       return (
         <View style={styles.container}>
         <ScrollView style={styles.scrollContainer}>

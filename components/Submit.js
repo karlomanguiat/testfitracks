@@ -82,24 +82,12 @@ const options = {
 
 type Props = {};
 export default class AddForm extends Component<Props> {
-  state = {
-
-  }
   handleSubmit = () => {
     const value = this._form.getValue();
     console.log('value: ', value);
-    if(value){
-      this.props.navigation.navigate('Home');
-      }
     }
     
   render() {
-    const { navigation } = this.props;
-    const water_container = navigation.getParam('water_container', 'NO-ID');
-    const amount_in_ml = navigation.getParam('amount_in_ml', 'some default value');
-    const date_consumed = navigation.getParam('date_consumed', 'some default value');
-    const time_consumed = navigation.getParam('time_consumed', 'some default value');
-
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollContainer}>
@@ -114,20 +102,46 @@ export default class AddForm extends Component<Props> {
               <TouchableOpacity
                 style={styles.SubmitButton}
                 onPress={this.handleSubmit}
+                //onPress = {() => this.props.navigation.navigate('Home')}
               >
                 <Text style={styles.SubmitButtonText}> Submit </Text>
               </TouchableOpacity>
             </View>
           </View>
         </ScrollView>
-
-        <TouchableOpacity 
-          style={styles.addButton}
-          onPress = {() => this.props.navigation.navigate('Home')}>
-            <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
       </View>
     );
+  }
+}
+
+const RootStack = createStackNavigator({
+    Home: {
+      screen: TestHomePage,
+    },
+    Add: {
+      screen: Submit,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#DB3B3B',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  },
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
   }
 }
 
