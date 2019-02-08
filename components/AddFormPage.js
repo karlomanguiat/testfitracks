@@ -110,7 +110,7 @@ export default class AddForm extends React.Component {
     const value = this._form.getValue();
     console.log('value: ', value);
     if(value){
-      this.props.navigation.navigate('Home');
+      this.props.navigation.navigate('Home', value);
       }
     }
     

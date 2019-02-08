@@ -20,7 +20,7 @@ Purpose of the Software: <FiTracks> is a web application which tracks the daily
 */
 
 import React, {Component} from 'react';
-import Main from './components/Main'
+import Main from './components/test/Main'
 
 
 export default class App extends React.Component {

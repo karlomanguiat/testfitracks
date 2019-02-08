@@ -19,7 +19,8 @@ Purpose of the Software: <FiTracks> is a web application which tracks the daily
 */
 
 import {AppRegistry} from 'react-native';
-import App from './components/HomePage';
+//import App from './components/HomePage';
+import App from './App';
 import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);
