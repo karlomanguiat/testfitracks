@@ -23,7 +23,7 @@ Purpose of the Software: <FiTracks> is a web application which tracks the daily
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {createAppContainer, createStackNavigator} from 'react-navigation'
-import AddFormPage from './AddFormPage'
+import AddWaterForm from './AddWaterForm'
 
 class HomePage extends React.Component {
     render() {
@@ -49,7 +49,7 @@ class HomePage extends React.Component {
       
         <TouchableOpacity 
           style={styles.addButton}
-          onPress = {() => this.props.navigation.navigate('Add')}>
+          onPress = {() => this.props.navigation.navigate('AddWater')}>
             <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
 
@@ -62,8 +62,8 @@ const RootStack = createStackNavigator({
       Home: {
         screen: HomePage,
       },
-      Add: {
-        screen: AddFormPage,
+      AddWater: {
+        screen: AddWaterForm,
       },
     },
     {
