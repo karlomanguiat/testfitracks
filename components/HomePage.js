@@ -12,6 +12,7 @@ Programmer		              Date			  Description
 Glenn Karlo D. Manguiat 		02/03/18		Creation
 Glenn Karlo D. Manguiat 		02/05/18 		Update on UI
 Glenn Karlo D. Manguiat			02/07/18		Update on UI
+Glenn Karlo D. Manguiat			02/12/18		Update on UI - Food Intake
 
 File Creation Date: 02/03/18
 Client Group: CS 192
@@ -24,6 +25,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {createAppContainer, createStackNavigator} from 'react-navigation'
 import AddWaterForm from './AddWaterForm'
+import AddFoodForm from './AddFoodForm'
 
 class HomePage extends React.Component {
     render() {
@@ -49,7 +51,7 @@ class HomePage extends React.Component {
       
         <TouchableOpacity 
           style={styles.addButton}
-          onPress = {() => this.props.navigation.navigate('AddWater')}>
+          onPress = {() => this.props.navigation.navigate('AddFood')}>
             <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
 
@@ -65,6 +67,9 @@ const RootStack = createStackNavigator({
       AddWater: {
         screen: AddWaterForm,
       },
+      AddFood: {
+        screen: AddFoodForm
+      }
     },
     {
       initialRouteName: 'Home',

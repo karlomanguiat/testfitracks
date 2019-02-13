@@ -1,3 +1,23 @@
+/*
+
+This is a course requirement for CS 191 / 192 Software Engineering Courses of the Department of Computer Science, 
+  College of Engineering, University of the Philippines, Diliman under the guidance of Ma. Rowena C. Solamo for the 
+  1st and 2nd Semester of the academic year <2018-2019>.
+
+This code is created by Trina B. Aguilana, Glenn Karlo D. Manguiat, and Ian N. Villanueva.
+
+Code History:
+
+Programmer		Date			Description
+Glenn Karlo D. Manguiat 		02/12/18		Creation
+
+File Creation Date: 02/12/2018
+Client Group: CS 192
+Purpose of the Software: <FiTracks> is a web application which tracks the daily, weekly, or monthly calorie spent 
+  in food and water intake for a fitter and healthier scholars of the University of the Philippines.
+
+*/
+
 import React, { Component } from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import t from 'tcomb-form-native';
@@ -11,8 +31,8 @@ var ContainerType = t.enums({
   Etc: 'Others'
 });
 const User = t.struct({
-  water_container: ContainerType,
-  amount_in_ml: t.Number,
+  foodtype: ContainerType,
+  amt_food: t.Number,
   date_consumed: t.Date,
   time_consumed: t.Date,
 });
@@ -54,11 +74,11 @@ const formStyles = { ...Form.stylesheet,
 
 const options = {
   fields: {
-    water_container: {
-      label: 'Water Container',
+    foodtype: {
+      label: 'Name of meal',
     },
-    amount_in_ml: {
-      label: 'Amount in mL'
+    amt_food: {
+      label: 'Number of servings'
     },
     date_consumed: {
       label: 'Date Consumed',
@@ -80,19 +100,21 @@ const options = {
   stylesheet: formStyles,
 };
 
-type Props = {};
-export default class AddForm extends Component<Props> {
+export default class AddForm extends React.Component {
+  state = {
+
+  }
   handleSubmit = () => {
     const value = this._form.getValue();
     console.log('value: ', value);
+    if(value){
+      this.props.navigation.navigate('Home', value);
+      }
     }
     
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>FiTracks</Text>
-          </View>
         <ScrollView style={styles.scrollContainer}>
           <View style={styles.containerScreen}>
             <View style={styles.formContainer}>
@@ -111,10 +133,6 @@ export default class AddForm extends Component<Props> {
             </View>
           </View>
         </ScrollView>
-
-        <TouchableOpacity style ={styles.backArrowButton}>
-          <Text style={styles.BackArrowText}>←</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -142,6 +160,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: '#cccccc', // <= relevant style here
     borderWidth: 1,
+  },
+  titleContainer: {
+    flex: 1,
+    width: 390,
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    left: 15
   },
   header: {
     backgroundColor: '#DB3B3B',
@@ -195,6 +220,13 @@ const styles = StyleSheet.create({
   SubmitButtonText: {
     color: '#fff',
     fontSize: 18
+  },
+  titleText: {
+    color: '#000',
+    fontSize: 19,
+    marginBottom: 0,
+    marginTop: 10,
+    textAlign: 'justify',
   },
   backArrowButton: {
     position: 'absolute',
