@@ -23,7 +23,7 @@ Purpose of the Software: <FiTracks> is a web application which tracks the daily
 import React, { Component } from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import t from 'tcomb-form-native';
-
+import moment from "moment";
 const Form = t.form.Form;
 
 var ContainerType = t.enums({
@@ -32,6 +32,7 @@ var ContainerType = t.enums({
   Container: 'Your Own Container',
   Etc: 'Others'
 });
+
 const User = t.struct({
   water_container: ContainerType,
   amount_in_ml: t.Number,
@@ -87,7 +88,11 @@ const options = {
       mode: 'date',
       config: {
         dialogMode: 'spinner',
-        defaultValueText: 'Add Date of Consumption'
+        defaultValueText: 'Add Date of Consumption',
+        format: (date) => {
+          const formatedDate = moment(date).format('DD-MM-YYYY');
+          return formatedDate;
+        }
       },
     },
     time_consumed: {
@@ -95,7 +100,11 @@ const options = {
       mode: 'time',
       config: {
         dialogMode: 'default',
-        defaultValueText: 'Add Time of Consumption'
+        defaultValueText: 'Add Time of Consumption',
+        format: (time) => {
+          const formatedDate = moment(time).format('h:mm:ss A');
+          return formatedDate;
+        }
       },
     },
   },
@@ -110,7 +119,7 @@ export default class AddForm extends React.Component {
     const value = this._form.getValue();
     console.log('value: ', value);
     if(value){
-      this.props.navigation.navigate('Home', value);
+        this.props.navigation.navigate('Home', value);
       }
     }
     

@@ -31,11 +31,12 @@ import movies from './test/foodindex.json'
 class HomePage extends React.Component {
     render() {
       const { navigation } = this.props;
-      const water_container = navigation.getParam('water_container');
+      const water_container = navigation.getParam('water_container', 'some 1 value');
       const amount_in_ml = navigation.getParam('amount_in_ml', 'some 2 value');
       const date_consumed = navigation.getParam('date_consumed', 'some 3 value');
       const time_consumed = navigation.getParam('time_consumed', 'some 4 value');
-      //console.log(movies.movies.id)
+
+      console.log(movies.movies.id)
       console.log('water: ', water_container);
       console.log('amount: ', amount_in_ml);
       console.log('date: ', date_consumed);
@@ -44,10 +45,10 @@ class HomePage extends React.Component {
       return (
         <View style={styles.container}>
         <ScrollView style={styles.scrollContainer}>
-        <Text>itemId: {JSON.stringify(water_container)}</Text>
-        <Text>itemId: {JSON.stringify(amount_in_ml)}</Text>
-        <Text>itemId: {JSON.stringify(date_consumed)}</Text>
-        <Text>itemId: {JSON.stringify(time_consumed)}</Text>
+        <Text>Container: {JSON.stringify(water_container)}</Text>
+        <Text>Amount in mL: {JSON.stringify(amount_in_ml)}</Text>
+        <Text>{JSON.stringify(date_consumed)}</Text>
+        <Text>{JSON.stringify(time_consumed)}</Text>
         </ScrollView>
       
         <TouchableOpacity 
@@ -74,9 +75,6 @@ const RootStack = createStackNavigator({
     },
     {
       initialRouteName: 'Home',
-
-      // Change default to static to change header settings.
-      // Add before render()
 
       defaultNavigationOptions: {
         title: 'FiTracks',
