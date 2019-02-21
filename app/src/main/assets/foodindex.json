@@ -1,0 +1,8 @@
+
+    [
+      { "id": "1", "foodname": "Rice", "count": 100 },
+      { "id": "2", "foodname": "Sinigang", "count": 200 },
+      { "id": "3", "foodname": "Adobo", "count": 300 },
+      { "id": "4", "foodname": "Fried Chicken", "count": 400 },
+      { "id": "5", "foodname": "Lumpia", "count": 500 }
+    ]
