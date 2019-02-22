@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mydatabase">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="FiTracks"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ViewWaterIntake"
+            android:label="@string/title_activity_view_water_intake"></activity>
+        <activity
+            android:name=".AddFoodForm"
+            android:label="AddFoodForm" />
+        <activity
+            android:name=".AddWaterForm"
+            android:label="@string/title_activity_add_water_form" />
+        <activity
+            android:name=".ViewFoodIntake"
+            android:label="@string/title_activity_view_food_intake" />
+        <activity
+            android:name=".MainActivity"
+            android:label="MainActivity" />
+        <activity
+            android:name=".Listview"
+            android:label="@string/title_activity_listview" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2" />
+        <activity android:name=".TemporaryScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
