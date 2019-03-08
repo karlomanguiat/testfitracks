@@ -12,6 +12,7 @@ public class TemporaryScreen extends Activity {
     Button btnWater;
     Button btnViewFood;
     Button btnViewWater;
+
     Button btnDelete;
     DatabaseHelper myDb;
 
@@ -88,8 +89,8 @@ public class TemporaryScreen extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        myDb.deleteAll();
-                        Toast.makeText(TemporaryScreen.this, "All Intakes Deleted!", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(TemporaryScreen.this, Delete.class);
+                        startActivity(intent);
 
                     }
                 }

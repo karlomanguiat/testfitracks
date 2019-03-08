@@ -24,7 +24,7 @@ public class AddWaterForm extends Activity {
         editDate = (EditText) findViewById(R.id.editText_date);
         editTime = (EditText) findViewById(R.id.editText_time);
         btnSubmit = (Button) findViewById(R.id.button_submit);
-        btnViewData = (Button) findViewById(R.id.button_view);
+        //btnViewData = (Button) findViewById(R.id.button_view);
         submitWater();
         //viewAll();
     }

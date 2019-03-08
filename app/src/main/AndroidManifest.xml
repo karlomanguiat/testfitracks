@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Delete"
+            android:label="@string/title_activity_delete"></activity>
+        <activity
             android:name=".ViewWaterIntake"
-            android:label="@string/title_activity_view_water_intake"></activity>
+            android:label="@string/title_activity_view_water_intake" />
         <activity
             android:name=".AddFoodForm"
             android:label="AddFoodForm" />
@@ -21,12 +24,6 @@
         <activity
             android:name=".ViewFoodIntake"
             android:label="@string/title_activity_view_food_intake" />
-        <activity
-            android:name=".MainActivity"
-            android:label="MainActivity" />
-        <activity
-            android:name=".Listview"
-            android:label="@string/title_activity_listview" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2" />

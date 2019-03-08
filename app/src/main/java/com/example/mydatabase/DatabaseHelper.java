@@ -40,11 +40,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_2);
         onCreate(db);
     }
-    public void deleteAll() {
+    /*public void deleteAll() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_1);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_2);
         onCreate(db);
+    }*/
+
+    public Integer deleteFoodIntake(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_1, "ID = ?",new String[] {id});
+
+    }
+    public Integer deleteWaterIntake(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_2, "ID = ?",new String[] {id});
+
     }
 
     public boolean insertFoodData(String foodname, String serving){
