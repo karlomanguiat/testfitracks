@@ -42,9 +42,9 @@ public class FoodIntakeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.activity_food_intake_fragment, container, false);
-        //Button myButton = (Button) waterView.findViewById(R.id.wateraddbutton);
+        View waterView = inflater.inflate(R.layout.activity_food_intake_fragment, container, false);
+        Button myButton = (Button) waterView.findViewById(R.id.wateraddbutton);
 
-        //return waterView;
+        return waterView;
     }
 }
