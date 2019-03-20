@@ -1,10 +1,7 @@
 package com.example.myapplication;
 
-<<<<<<< HEAD
 import android.content.Intent;
-=======
 import android.content.DialogInterface;
->>>>>>> c5b0c8f9b5ba958c2559b11620ff95f019478d3a
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
@@ -69,7 +66,6 @@ public class FoodIntakeFragment extends Fragment {
 
 
     @Override
-    @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -124,23 +120,6 @@ public class FoodIntakeFragment extends Fragment {
             }
         });
 
-        foodList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            private AdapterView<?> adapterView;
-            private View view;
-            private int i;
-            private long l;
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String text =  foodList.getItemAtPosition(i).toString();
-
-                adapter.remove(adapter.getItem(i));
-                adapter.notifyDataSetChanged();
-
-                return true;
-            }
-        });
-
         return foodView;
     }
 
@@ -150,36 +129,6 @@ public class FoodIntakeFragment extends Fragment {
         builder.setTitle(title);
         builder.setMessage(Message);
         builder.show();
-    }
-    private AlertDialog AskOption()
-    {
-        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
-                //set message, title, and icon
-                .setTitle("Delete")
-                .setMessage("Do you want to Delete")
-                .setIcon(R.drawable.delete)
-
-                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int whichButton) {
-
-                        dialog.dismiss();
-                    }
-
-                })
-
-
-
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-
-                    }
-                })
-                .create();
-        return myQuittingDialogBox;
-
     }
 }
 

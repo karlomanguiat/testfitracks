@@ -39,7 +39,7 @@ public class AddWaterForm extends Activity {
                             Toast.makeText(AddWaterForm.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         else
                             Toast.makeText(AddWaterForm.this, "Data NOT Inserted", Toast.LENGTH_LONG).show();
-
+                        finish();
                     }
                 }
         );
