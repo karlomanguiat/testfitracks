@@ -1,13 +1,14 @@
 package com.example.myapplication;
 
+<<<<<<< HEAD
 import android.content.Intent;
+=======
+import android.content.DialogInterface;
+>>>>>>> c5b0c8f9b5ba958c2559b11620ff95f019478d3a
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,16 +19,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListPopupWindow;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.widget.Toast.makeText;
 
 
 public class FoodIntakeFragment extends Fragment {
     DatabaseHelper myDb;
     ArrayList<String> food;
     ArrayList<String> foodOthers;
-    ArrayAdapter adapter;
+    ArrayAdapter<String> adapter;
     ListView foodList;
     Button myButton;
     Intent intent;
@@ -44,7 +49,15 @@ public class FoodIntakeFragment extends Fragment {
         int id = item.getItemId();
         switch (id) {
             case R.id.delete_food:
-                // do stuff
+//                SparseBooleanArray checkedItemPositions = foodList.getCheckedItemPositions();
+//                int count = this.foodList.getAdapter().getCount();
+//                for (int i = 0; i < count; i++) {
+//                    if (checkedItemPositions.get(i)) {
+//                        adapter.remove(foodOthers.get(i));
+//                    }
+//                }
+//                checkedItemPositions.clear();
+//                adapter.notifyDataSetChanged();
                 return true;
             case R.id.add_food:
                 // do stuff
@@ -53,6 +66,7 @@ public class FoodIntakeFragment extends Fragment {
 
         return false;
     }
+
 
     @Override
     @Nullable
@@ -110,6 +124,23 @@ public class FoodIntakeFragment extends Fragment {
             }
         });
 
+        foodList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            private AdapterView<?> adapterView;
+            private View view;
+            private int i;
+            private long l;
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String text =  foodList.getItemAtPosition(i).toString();
+
+                adapter.remove(adapter.getItem(i));
+                adapter.notifyDataSetChanged();
+
+                return true;
+            }
+        });
+
         return foodView;
     }
 
@@ -119,6 +150,36 @@ public class FoodIntakeFragment extends Fragment {
         builder.setTitle(title);
         builder.setMessage(Message);
         builder.show();
+    }
+    private AlertDialog AskOption()
+    {
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
+                //set message, title, and icon
+                .setTitle("Delete")
+                .setMessage("Do you want to Delete")
+                .setIcon(R.drawable.delete)
+
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        dialog.dismiss();
+                    }
+
+                })
+
+
+
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
+
     }
 }
 
