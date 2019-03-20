@@ -2,11 +2,8 @@ package com.example.myapplication;
 
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,7 +24,7 @@ public class WaterIntakeFragment extends Fragment {
     DatabaseHelper myDb;
     ArrayList<String> water;
     ArrayList<String> waterOthers;
-    ArrayAdapter adapter;
+    ArrayAdapter<String> adapter;
     ListView waterList;
 
     @Override
@@ -93,7 +90,21 @@ public class WaterIntakeFragment extends Fragment {
                 };
             }
         });
+        waterList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            private AdapterView<?> adapterView;
+            private View view;
+            private int i;
+            private long l;
 
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String text =  foodList.getItemAtPosition(i).toString();
+                adapter.remove(adapter.getItem(i));
+                adapter.notifyDataSetChanged();
+
+                return true;
+            }
+        });
         return waterView;
     }
     public void showMessage(String title, String Message) {
