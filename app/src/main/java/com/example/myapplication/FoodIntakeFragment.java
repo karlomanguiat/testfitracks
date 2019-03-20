@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,8 @@ public class FoodIntakeFragment extends Fragment {
     ArrayList<String> foodOthers;
     ArrayAdapter adapter;
     ListView foodList;
+    Button myButton;
+    Intent intent;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -52,18 +55,29 @@ public class FoodIntakeFragment extends Fragment {
     }
 
     @Override
+    @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         View foodView = inflater.inflate(R.layout.activity_food_intake_fragment, container, false);
-        Button myButton = (Button) foodView.findViewById(R.id.wateraddbutton);
+        myButton = (Button) foodView.findViewById(R.id.foodaddbutton);
+
+        myButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        /* DO SOMETHING UPON THE CLICK */
+                        Intent intent = new Intent(getActivity(), AddFoodForm.class);
+                        startActivity(intent);
+                    }
+                }
+        );
 
         myDb = new DatabaseHelper(getContext());
         food = new ArrayList<>();
         foodOthers = new ArrayList<>();
         foodList = (ListView) foodView.findViewById(R.id.foodListView);
-
-        myDb.insertFoodData("Crispy Pata","25");
+        // myDb.insertFoodData("Crispy Pata","25");
 
         final Cursor res = myDb.getFoodData();
         if (res.getCount() == 0) {
@@ -98,6 +112,7 @@ public class FoodIntakeFragment extends Fragment {
 
         return foodView;
     }
+
     public void showMessage(String title, String Message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(true);

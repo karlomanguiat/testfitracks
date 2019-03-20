@@ -6,4 +6,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="current_status">My Current Status</string>
+    <string name="title_activity_add_food_form">AddFoodForm</string>
+    <string name="title_activity_add_water_form">AddWaterForm</string>
 </resources>

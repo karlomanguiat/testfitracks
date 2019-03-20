@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,17 @@ public class WaterIntakeFragment extends Fragment {
         setHasOptionsMenu(true);
         View waterView = inflater.inflate(R.layout.activity_water_intake_fragment, container, false);
         Button myButton = (Button) waterView.findViewById(R.id.wateraddbutton);
+
+        myButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        /* DO SOMETHING UPON THE CLICK */
+                        Intent intent = new Intent(getActivity(), AddWaterForm.class);
+                        startActivity(intent);
+                    }
+                }
+        );
 
         myDb = new DatabaseHelper(getContext());
         water = new ArrayList<>();
