@@ -27,7 +27,7 @@ import static android.widget.Toast.makeText;
 
 public class FoodIntakeFragment extends Fragment {
     DatabaseHelper myDb;
-    public static ArrayList<String> food;
+    public static ArrayList<String> food,IDLIST;
     public static ArrayList<String> foodOthers;
     public static  ArrayAdapter<String> adapter;
     ListView foodList;
@@ -85,6 +85,7 @@ public class FoodIntakeFragment extends Fragment {
 
         myDb = new DatabaseHelper(getContext());
         food = new ArrayList<>();
+        IDLIST= new ArrayList<>();
         foodOthers = new ArrayList<>();
         foodList = (ListView) foodView.findViewById(R.id.foodListView);
         adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,food);
@@ -101,6 +102,7 @@ public class FoodIntakeFragment extends Fragment {
             foodOthers.add(res.getString(1));
             foodOthers.add("ID: " + res.getString(0));
             food.add(res.getString(1));
+            IDLIST.add(res.getString(0));
             foodOthers.add("Serving: " + res.getString(2));
             foodOthers.add("Date Consumed: " + res.getString(3));
             foodOthers.add("Time Consumed: " + res.getString(4));
@@ -121,6 +123,33 @@ public class FoodIntakeFragment extends Fragment {
             }
         });
 
+        foodList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            private AdapterView<?> adapterView;
+            private View view;
+            private int i;
+            private long l;
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long id) {
+                String text =  foodList.getItemAtPosition(i).toString();
+                String[] words= text.split("\\s") ;//splits the string based on whitespace
+                String theID = Long.toString(id);
+                adapter.remove(adapter.getItem(i));
+                adapter.notifyDataSetChanged();
+                // whereis10= ten is at list.indexOF(10);
+                //10 is at index 2
+                //        IDLIST.get(IDLIST.indexOf())
+                Integer deletedRows = myDb.deleteFoodIntake(IDLIST.get(i));
+                IDLIST.remove(i);
+                //Integer deletedRows = myDb.deleteWaterIntake(words[0]);
+                if(deletedRows > 0){
+                    Toast.makeText(getContext(), "Data Deleted", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getContext(), "Data Not Deleted/Nothing to Delete!", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
         return foodView;
     }
 

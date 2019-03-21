@@ -48,6 +48,7 @@ public class AddWaterForm extends Activity {
                         while(res.moveToNext()){
                             WaterIntakeFragment.waterOthers.add(res.getString(1));
                             WaterIntakeFragment.waterOthers.add("ID: " + res.getString(0));
+                            WaterIntakeFragment.IDLIST.add(res.getString(0));
                             //waterOthers.add("Number of Cups: " + res.getString(1));
                             WaterIntakeFragment.waterOthers.add("Date Consumed: " + res.getString(2));
                             WaterIntakeFragment.waterOthers.add("Time Consumed: " + res.getString(3));

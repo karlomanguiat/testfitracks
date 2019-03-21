@@ -58,7 +58,7 @@ public class AddFoodForm extends AppCompatActivity {
 
                             FoodIntakeFragment.foodOthers.add(res.getString(1));
                             FoodIntakeFragment.foodOthers.add("ID: " + res.getString(0));
-
+                            FoodIntakeFragment.IDLIST.add(res.getString(0));
                             FoodIntakeFragment.foodOthers.add("Serving: " + res.getString(2));
                             FoodIntakeFragment.foodOthers.add("Date Consumed: " + res.getString(3));
                             FoodIntakeFragment.foodOthers.add("Time Consumed: " + res.getString(4));

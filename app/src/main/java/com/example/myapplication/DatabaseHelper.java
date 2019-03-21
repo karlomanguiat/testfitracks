@@ -51,11 +51,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Integer deleteFoodIntake(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME_1, "ID = ?",new String[] {id});
+        //return db.delete(TABLE_NAME_1, "ID= "+id,null);
 
     }
     public Integer deleteWaterIntake(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME_2, "ID = ?",new String[] {id});
+        //return db.delete(TABLE_NAME_2, "ID= "+id,null);
 
     }
 

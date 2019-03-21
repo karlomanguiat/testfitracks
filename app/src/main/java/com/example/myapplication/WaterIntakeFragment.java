@@ -17,13 +17,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import android.widget.Toast;
 import java.util.ArrayList;
 
 
 public class WaterIntakeFragment extends Fragment {
 
     DatabaseHelper myDb;
-    public static ArrayList<String> water;
+    public static ArrayList<String> water,IDLIST;
     public static ArrayList<String> waterOthers;
     public static ArrayAdapter<String> adapter;
     ListView waterList;
@@ -56,6 +57,7 @@ public class WaterIntakeFragment extends Fragment {
 
         myDb = new DatabaseHelper(getContext());
         water = new ArrayList<>();
+        IDLIST= new ArrayList<>();
         waterOthers = new ArrayList<>();
         waterList = (ListView)waterView.findViewById(R.id.waterListView);
         adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,water);
@@ -84,6 +86,9 @@ public class WaterIntakeFragment extends Fragment {
         while(res.moveToNext()){
             waterOthers.add(res.getString(1));
             waterOthers.add("ID: " + res.getString(0));
+
+            IDLIST.add(res.getString(0));
+
             water.add(res.getString(1) + " cups");
             //adapter.notifyDataSetChanged();
 
@@ -107,22 +112,35 @@ public class WaterIntakeFragment extends Fragment {
                 };
             }
         });
-        return waterView;
-       /* waterList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+       waterList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             private AdapterView<?> adapterView;
             private View view;
             private int i;
             private long l;
 
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String text =  foodList.getItemAtPosition(i).toString();
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long id) {
+                String text =  waterList.getItemAtPosition(i).toString();
+                String[] words= text.split("\\s") ;//splits the string based on whitespace
+                String theID = Long.toString(id);
                 adapter.remove(adapter.getItem(i));
                 adapter.notifyDataSetChanged();
-
+               // whereis10= ten is at list.indexOF(10);
+                //10 is at index 2
+                //        IDLIST.get(IDLIST.indexOf())
+                Integer deletedRows = myDb.deleteWaterIntake(IDLIST.get(i));
+                IDLIST.remove(i);
+                //Integer deletedRows = myDb.deleteWaterIntake(words[0]);
+                if(deletedRows > 0){
+                    Toast.makeText(getContext(), "Data Deleted", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getContext(), "Data Not Deleted/Nothing to Delete!", Toast.LENGTH_LONG).show();
+                }
                 return true;
             }
-        });*/
+        });
+        return waterView;
 
     }
     public void showMessage(String title, String Message) {
