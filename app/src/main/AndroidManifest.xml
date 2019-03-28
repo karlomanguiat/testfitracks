@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".EditWaterForm"
+            android:label="@string/title_activity_edit_water_form"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".EditFoodForm"
+            android:label="@string/title_activity_edit_food_form"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".AddWaterForm"
             android:label="@string/title_activity_add_water_form"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".FoodList" />
         <activity android:name=".FoodListFragment" />
         <activity
