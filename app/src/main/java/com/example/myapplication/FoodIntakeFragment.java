@@ -157,9 +157,6 @@ public class FoodIntakeFragment extends Fragment {
                 String theID = Long.toString(id);
                 adapter.remove(adapter.getItem(i));
                 adapter.notifyDataSetChanged();
-                // whereis10= ten is at list.indexOF(10);
-                //10 is at index 2
-                //        IDLIST.get(IDLIST.indexOf())
                 Integer deletedRows = myDb.deleteFoodIntake(IDLIST.get(i));
                 IDLIST.remove(i);
                 if(deletedRows > 0){
