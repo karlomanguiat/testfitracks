@@ -1,1 +1,3 @@
-# testfitracks
+#FiTracks
+
+Installation guide:
