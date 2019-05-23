@@ -1,3 +1,3 @@
-#FiTracks
+FiTracks
 
 Installation guide:
