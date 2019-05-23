@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View home = inflater.inflate(R.layout.activity_home_fragment, container, false);
+        getActivity().setTitle("FiTracks");
         total_food = (TextView) home.findViewById(R.id.total_food);
         total_water = (TextView) home.findViewById(R.id.total_water);
         //total_water2 = (TextView) home.findViewById(R.id.total_water2);

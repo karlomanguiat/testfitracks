@@ -84,6 +84,7 @@ public class WaterIntakeFragment extends Fragment {
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         View waterView = inflater.inflate(R.layout.activity_water_intake_fragment, container, false);
+        getActivity().setTitle("My Water Intake");
         myButton = (Button) waterView.findViewById(R.id.wateraddbutton);
 
         myDb = new DatabaseHelper(getContext());

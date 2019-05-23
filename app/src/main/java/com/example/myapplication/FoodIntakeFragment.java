@@ -100,6 +100,7 @@ public class FoodIntakeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
+        getActivity().setTitle("My Food Intake");
         View foodView = inflater.inflate(R.layout.activity_food_intake_fragment, container, false);
         myButton = (Button) foodView.findViewById(R.id.foodaddbutton);
 
