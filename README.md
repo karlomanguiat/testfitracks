@@ -29,7 +29,7 @@ This is a **_course requirement for CS 191 / 192 Software Engineering Courses_**
 
 7. Build the project through Build > Make Project.
 
-8. Set-up Android device, may be an emulator using the AVD Manager built on Android Studio, or through a USB connection in your android device.
+8. Set-up Android device, may be an emulator using the AVD Manager built on Android Studio, or through a USB connection on your Android device.
 
 9. Once configured, run the app through Run > Run app.
 
